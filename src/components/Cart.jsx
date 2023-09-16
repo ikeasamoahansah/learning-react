@@ -2,9 +2,9 @@ import React from 'react';
 
 const Cart = ({ cartItems, removeFromCart }) => {
 
-    const calculateTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-      };
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
+  };
 
   return (
     <div>
@@ -12,7 +12,8 @@ const Cart = ({ cartItems, removeFromCart }) => {
       <ul>
         {cartItems.map((item, index) => (
           <li key={index}>
-            {item.title} - ${item.price}
+            {item.title} x{item.quantity} - ${item.price}
+            <br />
             <button onClick={() => removeFromCart(index)}>Remove</button>
           </li>
         ))}
