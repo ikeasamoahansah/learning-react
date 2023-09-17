@@ -1,10 +1,10 @@
-import React from 'react';
+import {useMemo} from 'react';
 
 const Cart = ({ cartItems, removeFromCart }) => {
 
-  const calculateTotalPrice = () => {
+  const calculateTotalPrice = useMemo(() => {
     return cartItems.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
-  };
+  },[cartItems]);
 
   return (
     <div>
